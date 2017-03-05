@@ -13,10 +13,11 @@ Branch = function(x1,y1,angle){
 Branch.prototype.grow = function(){
   this.leaf = false;
   for(var i = -(floor(brNumber/2)); i < floor(brNumber/2)+1; i++){
-    if(brNumber%2 == 1 )
+    if(brNumber%2 == 1 ){
       branches.push(new Branch(this.x2,this.y2,this.angle+i*angle));
-    else{
-      var brAngle = (angle/2)
+    }
+    else if(i !== 0){
+      var brAngle = floor(angle/2)
       if(i > 0 )
         brAngle*=-1
       branches.push(new Branch(this.x2,this.y2,this.angle+i*angle+brAngle));
