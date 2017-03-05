@@ -11,14 +11,16 @@ Branch = function(x1,y1,angle){
   
 }
 Branch.prototype.grow = function(){
-  
   this.leaf = false;
-  brAngle=angle*(brNumber-1)/brNumber
   for(var i = -(floor(brNumber/2)); i < floor(brNumber/2)+1; i++){
     if(brNumber%2 == 1 )
       branches.push(new Branch(this.x2,this.y2,this.angle+i*angle));
-    else if(i!== 0 )
-      branches.push(new Branch(this.x2,this.y2,this.angle+i*angle));
+    else{
+      var brAngle = (angle/2)
+      if(i > 0 )
+        brAngle*=-1
+      branches.push(new Branch(this.x2,this.y2,this.angle+i*angle+brAngle));
+    }
   }
 }
 Branch.prototype.draw = function(){
